@@ -1,23 +1,15 @@
-// Ex19) function에 return 있는 모습
-function t1(){
-    console.log(1);
+// Ex20) 가변 인수 전달
+function t5(){
+    console.log(arguments); // [Arguments] { '0': 10, '1': 20, '2': 30 }
+    console.log(typeof(arguments)); 
+    console.log(arguments.length); 
+
+    let sum = 0;
+    for (let key in arguments) {
+        sum += arguments[key];
+        console.log(sum);
+        console.log(arguments[key]);
+    }
 }
 
-function t2(n, s){
-    console.log(n+s);
-}
-
-function t3(){
-    console.log(3);
-    return 't3';
-}
-
-function t4(n){
-    console.log(4);
-    return n*2;
-}
-
-t1();
-t2(2,3);
-console.log(t3());
-console.log(t4(12));
+t5(10, 20, 30);
