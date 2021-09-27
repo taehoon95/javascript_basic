@@ -1,5 +1,3 @@
-console.log("asd")
-
 //Ex 6) var , let 차이
 var a = 10;
 
@@ -124,3 +122,33 @@ f3();
 })();
 
 (() => console.log("2"))();
+
+function f4(num) {
+    console.log(num);
+}
+f4(100);
+
+(function(num) {
+    console.log(num);
+})(200);
+
+((dt) => {
+    let start = new Date().getTime();
+    while(new Date().getTime() < start + dt);
+})(0);
+console.log("test");
+
+// Ex18) 생성자 함수 : 클래스와 동격이다.
+function Fff555(){
+    this.num1 = 10; // 멤버 변수 선언
+    this.num2 = 20;
+    this.m1 = function(){
+        console.log(this.num1);
+    };
+    this.m2 = () => console.log(this.num2);
+}
+
+let ins = new Fff555();
+ins.m1();
+ins.m2();
+new Fff555().m1();
