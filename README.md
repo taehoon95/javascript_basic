@@ -1,7 +1,7 @@
 #  함수 사용하기 
 
 ### Hoisting 가능
-```
+```js
 function f1() {
     console.log("1");
 }
