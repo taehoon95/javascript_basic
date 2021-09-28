@@ -328,3 +328,128 @@ console.log(t(10)(20));
 
 t = (a) => (b) => a + b; // t = a => b => a + b; 동격코드
 ```
+
+//   배열            객체
+//   []               {}
+// 인덱스생성       속성생성
+// forEach사용     forEach불가
+// length사용      length불가
+
+## Ex30) 객체 기본 사용
+```js
+let t = {
+    name: "호랑이",
+    age: 1,
+    bl: true,
+};
+
+console.log(t);
+console.log(t.name, t.age, t.bl);
+console.log(t["name"], t["age"], t["bl"]);
+
+for (const key in t) {
+    // console.log(key);
+    console.log(t[key]);
+}
+
+console.log(t.name, t.age);
+
+with(t){
+    console.log(name, age);
+}
+```
+
+## Ex31)객체 
+
+### 컴파일중 속성 추가,삭제
+```js
+let obj = {
+    a : 10,
+    b : 20,
+    f1 : () => console.log('f1asdf'),
+}
+
+console.log(obj);
+obj.b = 99;
+obj.c = 30;
+console.log(obj);
+
+delete(obj.b);
+console.log(obj);
+
+obj.f2 = () => console.log("test");
+
+obj.f2();
+
+delete(obj.f1);
+```
+
+### 람다에서는 this를 사용할 수 없다.
+```js
+let obj = {
+    a: 10,
+    b: 20,
+    f1: function () {
+        console.log(this.a, this.b)
+    },
+    // f2: () => console.log(this.a, this.b),
+    f2: function(){
+        for (const key in this) {
+            console.log(this[key]);
+        }
+    }
+}
+
+obj.f1();
+console.log('----------------------------------------------------------');
+
+obj.f2();  
+```
+
+### c가 가지고 있는값이 key값이 됨
+```js
+let c = "tiger";
+let obj = {
+    a: 10,
+    b: 20,
+    [c]: 30, 
+}
+
+for (const key in obj) {
+    console.log(`${key} : ${obj[key]}`);
+}
+```
+```js
+let obj = {
+    a: 10,
+}
+
+obj.b = 29;
+console.log(obj);
+
+obj['c'] = 30;
+console.log(obj);
+
+for (let i = 0; i < 4; i++) {
+    obj['tiger' + i] = i*100;
+}
+
+console.log(obj);
+```
+
+```js
+let obj01 = {
+    a:10,
+    b:20,
+}
+let obj02 = {
+    c:30,
+    d:40,
+}
+
+let obj03 = Object.assign(obj01,obj02);
+console.log(obj03);
+
+let obj04 = {...obj01, ...obj02};
+console.log(obj04);
+```

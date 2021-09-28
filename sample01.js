@@ -378,3 +378,33 @@ console.log(t(10)(20));
 t = (a) => (b) => a + b; // t = a => b => a + b; 동격코드
 
 
+// // Ex28) 비동기: 순서 안지키는 것들을 -> 순서를 꼭지킬수 있게 만든다.
+let num = 0;
+let id = setInterval(
+    () => {console.log(num++);},2000
+);
+console.log(2);
+
+
+setTimeout(
+    () => {
+        clearInterval(id)
+    }, 100
+);
+
+for (let i = 0; i < 3; i++) {
+    (function (x){
+        setTimeout(
+            () => {console.log(x);},i*1000
+        )
+    })(i);
+};
+
+//Ex29)eval(); -> 가급적 사용을 자제하는게 좋다.
+
+let str = '';
+str += "let a = 10;";
+str += "console.log(a)";
+console.log(str);
+eval(str);
+
