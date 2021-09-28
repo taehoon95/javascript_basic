@@ -434,7 +434,7 @@ for (let i = 0; i < 4; i++) {
 
 console.log(obj);
 ```
-## 비구조화 할당/구조분해 할당
+## 스프레드 오퍼레이터
 ```js
 let obj01 = {
     a:10,
@@ -450,4 +450,69 @@ console.log(obj03);
 
 let obj04 = {...obj01, ...obj02};
 console.log(obj04);
+
+let f1 = (o)=>{
+    console.log(o.d);
+}
+
+f1({...obj01, ...obj02})
+```
+## Ex32) 배열
+```
+let ar = [10,20,30];
+
+console.log(ar);
+console.log(ar.length);
+console.log(typeof(ar));
+console.log(Array.isArray(ar)); // 배열 확인 : true
+
+let br = Array(); // []
+let cr = Array(5);// 배열 크기
+let dr = Array(10, 20, 30); // 배열 값 넣기
+
+ar = [
+    10,
+    "호랑이",
+    true, 
+    [10, 20, 30],
+    {
+        name: "덕수리",
+        age: 222,
+    },
+    function(){},
+    undefined,
+];
+
+// index받기
+for (const i in ar) {
+    console.log(i, ar[i]);
+}
+console.log();
+
+// 값 바로 받기
+for (const value of ar) {
+    console.log(value);
+}
+console.log();
+
+ar.forEach(
+    (v, i) => {
+        console.log(v, i)
+});
+console.log();
+
+let br = ar.map((num)=>{
+    return num+ '💨';
+});
+
+console.log(br);
+
+
+br = ar.map(num=> '🛀'+num );
+
+console.log(br);
+
+let cr = [0,1,2,3];
+let dr = cr.map( num => (num % 2) ? "odd" : "even");
+console.log(dr);
 ```
