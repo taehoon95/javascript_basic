@@ -1,15 +1,18 @@
-// Ex20) 가변 인수 전달
-function t5(){
-    console.log(arguments); // [Arguments] { '0': 10, '1': 20, '2': 30 }
-    console.log(typeof(arguments)); 
-    console.log(arguments.length); 
-
-    let sum = 0;
-    for (let key in arguments) {
-        sum += arguments[key];
-        console.log(sum);
-        console.log(arguments[key]);
+// Ex21) 내부함수
+let f1 = function () {
+    console.log(1);
+    let f2 = function () {
+        console.log(2);
     }
+    f2();
 }
+f1();
 
-t5(10, 20, 30);
+f1 = function () {
+    console.log(3);
+    f2 = function () {
+        console.log(4);
+    }
+    f2();
+}
+f1();
