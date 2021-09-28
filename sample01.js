@@ -192,3 +192,189 @@ function t5(){
 }
 
 t5(10, 20, 30);
+
+// Ex21) 내부함수
+let f1 = function () {
+    console.log(1);
+    let f2 = function () {
+        console.log(2);
+    }
+    f2();
+}
+f1();
+
+f1 = function () {
+    console.log(3);
+    let f2 = function () {
+        console.log(4);
+    }
+    f2();
+}
+f1();
+
+// Ex22) 콜백함수 : 함수를 파라미터로 받는 경우
+
+let f1 = function(fc){
+    console.log(1);
+    fc();
+}
+
+let f2 = function(){
+    console.log(2);
+}
+
+// 방법1
+f1(f2);
+
+// 방법2
+f1(function(){
+    console.log(3);
+});
+
+// 방법3
+f1(()=> console.log(4));
+
+// Ex23) 함수를 리턴하는 함수
+
+let f1 = function(fc){
+    console.log(1);
+    let f2 = function(){
+        console.log(2);
+    }
+    return f2; // return f2();
+}
+f1()();
+
+f3 = function(fc){
+    console.log(3);
+    return function(){
+        console.log(4);
+    }
+}
+f3()();
+
+// Ex24) 리턴값이 함수인 즉시시행 함수
+(function(){
+    console.log(1);
+    return function(){
+        console.log(2);
+    }
+})()();
+
+// Ex25) 클로즈함수 : 지역변수가 사라지지않고 계속 사용할수 있도록 만들어 놓는것(생명연장)
+let f1 = function () {
+    let a = 100;
+    return function () {
+        console.log(a);
+    }
+}
+
+f1()();
+
+// Ex27) 람다함수 문제
+//1
+((a) => {(b) => {}})();
+
+((a) => {
+    (b) => {
+    }
+})();
+
+(function(a){
+    return function(b){ }
+})();
+
+//2
+((a) => {((b) => {})()})();
+
+((a) => {
+    ((b) => {})()
+})();
+
+(function(a) {
+    return (function(b){
+
+    })();
+})();
+
+//3
+((a) => {
+    ((b) => {
+        console.log(a + b)
+    })(20)
+})(10);
+
+((function(a){
+    (function(b){
+        console.log(a + b);
+    })(20)
+}))(11);
+
+//3-2
+let f1 = function (fc) {
+    fc(11);
+};
+
+f1(((a) => {
+    ((b) => {
+        console.log(a + b)
+    })(20)
+}));
+
+//4
+f1 = () => 100
+f1 = function(){
+    return 100;
+}
+console.log(f1());
+
+f2 = () => console.log(111);
+f2 = function(){
+    console.log(111);
+}
+f2();
+
+// 람다함수 return 생략가능
+let f1 = () => {
+    return 100;   
+};
+
+let f2 = () => 100;
+
+let f3 = () =>{
+    return console.log(1);
+};
+
+let f4 = () => console.log(1);
+
+// 5. 인수 없을때 
+let t = () => () => 100;
+
+t = function () {
+    return function () {
+        return 100;
+    }
+};
+
+console.log(t()());
+
+// 6.인수있을때
+t = a => b => 100;
+
+t = a => {
+    return b => {
+        return 100
+    };
+};
+
+t = function (a) {
+    return function (b) {
+        return a+b;
+    };
+};
+
+console.log(t(10)(20));
+
+t = (a) => (b) => a + b; // t = a => b => a + b; 동격코드
+
+
