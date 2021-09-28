@@ -515,4 +515,35 @@ console.log(br);
 let cr = [0,1,2,3];
 let dr = cr.map( num => (num % 2) ? "odd" : "even");
 console.log(dr);
+
+let ar = [
+    {
+        n:"호랑이",
+        a:10,
+    },
+    {
+        n:"코끼리",
+        a:20,
+    },
+    {
+        n:"독수리",
+        a:30,
+    },
+];
+
+console.log(ar);
+
+for (const key in ar) {
+    let e = ar[key];
+    console.log(e.n, e.a);
+    console.log(e['n'], e['a']);
+}
+let sum = 0;
+for (const v of ar) {
+    sum += v.a;
+}
+console.log(sum);
+
+let br = ar.map((v,k) => v.n + "🍺")
+console.log(br);
 ```
