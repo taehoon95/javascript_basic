@@ -454,5 +454,3 @@ console.log(obj03);
 let obj04 = {...obj01, ...obj02};
 console.log(obj04);
 ```
-=======
->>>>>>> 4de1543f1a5d65b121c5d1351a045e7c03a804c4
