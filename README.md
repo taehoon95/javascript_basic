@@ -437,7 +437,7 @@ for (let i = 0; i < 4; i++) {
 
 console.log(obj);
 ```
-
+## 비구조화 할당/구조분해 할당
 ```js
 let obj01 = {
     a:10,
