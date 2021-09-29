@@ -458,7 +458,7 @@ let f1 = (o)=>{
 f1({...obj01, ...obj02})
 ```
 ## Ex32) 배열
-```
+```js
 let ar = [10,20,30];
 
 console.log(ar);
@@ -549,7 +549,7 @@ console.log(br);
 ```
 
 ### Ex33) 배열의 함수
-```
+```js
 let ar = [80, 20, 10, 15];
 console.log(ar, typeof ar, Array.isArray(ar));
 
@@ -576,7 +576,7 @@ console.log(ar);
 console.log(num);
 ```
 ### Ex34) concat()
-```
+```js
 let ar = [10,20,30];
 let br = ar.concat(40);
 console.log(ar);
