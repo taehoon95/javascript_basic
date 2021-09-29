@@ -547,3 +547,50 @@ console.log(sum);
 let br = ar.map((v,k) => v.n + "🍺")
 console.log(br);
 ```
+
+### Ex33) 배열의 함수
+```
+let ar = [80, 20, 10, 15];
+console.log(ar, typeof ar, Array.isArray(ar));
+
+let br = ar.toString();
+console.log(br, typeof br);
+
+let st01= "80,20,10,15";
+console.log(st01, typeof st01);
+
+let date = new Date();
+console.log(date);
+console.log(date.toLocaleString());
+
+let ar = [80,20,10,15];
+// pop()*
+let num = ar.pop();
+console.log(num);
+console.log(ar);
+console.log(ar);
+
+// push()*x
+num = ar.push(20);
+console.log(ar);
+console.log(num);
+```
+### Ex34) concat()
+```
+let ar = [10,20,30];
+let br = ar.concat(40);
+console.log(ar);
+console.log(br);
+
+let cr = [40,50,60];
+let dr = ar.concat(cr)
+console.log(dr); // (6) [10, 20, 30, 40, 50, 60]
+
+console.log("test");
+
+let er = [...ar,...cr]; //[10, 20, 30, 40, 50, 60]
+console.log(er);
+
+ar.push(cr); //[ 10, 20, 30, [ 40, 50, 60 ] ]
+console.log(ar);
+```
