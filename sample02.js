@@ -1,17 +1,15 @@
-// Ex34) concat()
-let ar = [10,20,30];
-let br = ar.concat(40);
-console.log(ar);
-console.log(br);
+// Ex35) 
+// splice
+let ar = [1, 2, 3];
+// [시작위치, 삭제항목수, 추가항목,,,]
 
-let cr = [40,50,60];
-let dr = ar.concat(cr)
-console.log(dr); // (6) [10, 20, 30, 40, 50, 60]
+ar.splice(1, 0, 10, 20, 30); // 인덱스 1인 위치부터 0개 삭제후 그위치에 10,20,30을 넣는다.
 
-console.log("test");
+console.log(ar); // [ 1, 10, 20, 30, 2, 3 ]
 
-let er = [...ar,...cr]; //[10, 20, 30, 40, 50, 60]
-console.log(er);
+ar.splice(1, 2, 88, 99);
+console.log(ar); //[ 1, 88, 99, 30, 2, 3]
 
-ar.push(cr); //[ 10, 20, 30, [ 40, 50, 60 ] ]
+let br = [66, 55, 44, 33];
+ar.splice(0, 0, br); //[ [ 66, 55, 44, 33 ], 1, 88, 99, 30, 2, 3 ]
 console.log(ar);

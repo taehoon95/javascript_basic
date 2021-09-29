@@ -575,7 +575,83 @@ num = ar.push(20);
 console.log(ar);
 console.log(num);
 ```
-### Ex34) concat()
+
+#### reverse()
+```js
+let ar = [10,20,30];
+console.log(ar.reverse());
+```
+
+#### shift,unshift
+```js
+let ar = [10,20,30];
+console.log(ar.shift()); // [ 20, 30 ]
+console.log(ar);
+console.log(ar.unshift(40));
+console.log(ar); //[ 40, 20, 30 ]
+console.log(ar.unshift(50, 60, 70));//6
+console.log(ar); //[ 50, 60, 70, 40, 20, 30 ]
+```
+
+#### sort : 문자로 비교 한다.(사전순)
+```js 
+let ar = [52, 273, 103, 32];
+
+ar.sort();
+console.log(ar); // [ 103, 273, 32, 52 ]
+
+//순차정렬 
+
+ar.sort(func);
+
+// function func(a, b){
+//     if(a > b){
+//         return +1;
+//     }else{
+//         return -1;
+//     }
+// }
+
+
+// function func(a, b) {
+//     // return (a > b) ? +1 : -1;
+//     return a - b;
+// }
+
+// 다양하게 활용 가능: 절대값 비교
+function func(a, b) {
+    let c = Math.abs(a);
+    let d = Math.abs(b);
+    return c - d;
+}
+
+
+console.log(ar);
+
+let ar = [
+    {
+        n:30,
+        s:"삼성",
+    },
+    {
+        n:20,
+        s:"롯데",
+    },
+    {
+        n:10,
+        s:"현대",
+    },
+];
+
+// 다양하게 활용 가능 :객체안값 비교
+function func(a, b) {
+    return a.n - b.n;
+}
+
+ar.sort(func);
+console.log(ar); //[ { n: 10, s: '현대' }, { n: 20, s: '롯데' }, { n: 30, s: '삼성' } ]
+```
+####  concat
 ```js
 let ar = [10,20,30];
 let br = ar.concat(40);
@@ -593,4 +669,35 @@ console.log(er);
 
 ar.push(cr); //[ 10, 20, 30, [ 40, 50, 60 ] ]
 console.log(ar);
+
+let ar = ["tiger","lion","cat"];
+console.log(ar.join());
+console.log(ar.join(''));
+console.log(ar.join("-"));
 ```
+
+#### slice
+```js
+let ar = [10,20,30,40,50,60];
+// [2,4)
+let br = ar.slice(2,4);
+console.log(br);
+```
+
+#### splice
+```js
+let ar = [1, 2, 3];
+// [시작위치, 삭제항목수, 추가항목,,,]
+
+ar.splice(1, 0, 10, 20, 30); // 인덱스 1인 위치부터 0개 삭제후 그위치에 10,20,30을 넣는다.
+
+console.log(ar); // [ 1, 10, 20, 30, 2, 3 ]
+
+ar.splice(1, 2, 88, 99);
+console.log(ar); //[ 1, 88, 99, 30, 2, 3]
+
+let br = [66, 55, 44, 33];
+ar.splice(0, 0, br); //[ [ 66, 55, 44, 33 ], 1, 88, 99, 30, 2, 3 ]
+console.log(ar);
+```
+
