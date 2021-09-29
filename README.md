@@ -701,3 +701,104 @@ ar.splice(0, 0, br); //[ [ 66, 55, 44, 33 ], 1, 88, 99, 30, 2, 3 ]
 console.log(ar);
 ```
 
+#### indexof : 검색
+```js
+let ar = ["tiger", "cat", "lion", "apple", "tiger"];
+console.log(ar.indexOf("lion")); // 2 : 찾은 위치
+console.log(ar.indexOf("lon")); // -1
+
+console.log(ar.indexOf("lion", 3)); // -1, ar.indexOf("lion", 3)에서 3은 인덱스번호 3인곳 부터 찾아라 그래서 못찾음
+console.log(ar.lastIndexOf("apple")); // 3
+
+// 같은값 찾을때
+console.log(ar.lastIndexOf("tiger")); // 4
+console.log(ar.indexOf("tiger")); // 0
+```
+
+#### every : 결석데이터(있어야하는 데이터가 없거나, 없어야 되는 데이터 있는 경우) 찾을때 사용
+```js
+let ar = [1, 2, 10, 39, 20];
+let br = [1, 2, 10, 50, 20];
+
+
+let func = function (value) {
+    return value < 40;
+}
+
+console.log(ar.every(func)); // true
+console.log(br.every(v => v < 40)); // false
+```
+
+#### some : 하나만 만족 해도 true
+```js
+let ar = [1, 5, 11 ,39, 21 ];
+console.log(ar.some(v => v % 2 == 0)); // false
+```
+
+#### filter : 특정 조건을 이용해서 원하는 데이터만 뽑아낸다.
+```js
+let ar = [1, 5, 11 ,39, 21 ];
+let br = ar.filter( v => v < 15);
+console.log(br); // [ 1, 5, 11 ]
+
+// filter 예제 : ar배열안의 문자열 중 글자 크기가 3이하 인것들
+let ar = ["tiger", "cat", "dog", "lion", "ai"];
+
+let b = ar.filter(v => v.length < 4);
+
+console.log(b); // [ 'cat', 'dog', 'ai' ]
+```
+
+#### length
+```js
+let ar = [1, 6, 11 ,39, 21 ];
+
+console.log(ar.length); // 5
+
+let st = "tiger"
+console.log(st.length); // 5
+```
+
+### Ex34) 객체 안에서 람다 사용은 주의 해야한다.
+#### this를 주의 하자
+
+```js
+let obj = { 
+    num : 100,
+    func01 : () => {
+        console.log(this);
+    },
+    func02 : function(){
+        console.log(this);
+    },
+    func03 (){
+        console.log(this);
+    },
+}
+
+obj.func01(); // {}
+obj.func02(); // {num: 100, func01: ƒ, func02: ƒ, func03: ƒ}
+obj.func03(); // {num: 100, func01: ƒ, func02: ƒ, func03: ƒ}
+```
+
+### Ex35) 생성자 함수(클래스) >> new
+```js
+function Func(){
+    this.num = 100;
+    this.obj = {
+        num : 200,
+        f2 : function(){
+            console.log(this.num);
+        },
+        f1 : ()=>{
+            console.log(this.num);
+        },
+    };
+}
+
+let ins = new Func();
+ins.obj.f1();
+ins.obj.f2();
+
+let ins =new Ffff(); // ins : 인스턴스
+```

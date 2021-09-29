@@ -1,15 +1,68 @@
-// Ex35) 
-// splice
-let ar = [1, 2, 3];
-// [시작위치, 삭제항목수, 추가항목,,,]
+// Ex34) 
 
-ar.splice(1, 0, 10, 20, 30); // 인덱스 1인 위치부터 0개 삭제후 그위치에 10,20,30을 넣는다.
+// reduce 함수
 
-console.log(ar); // [ 1, 10, 20, 30, 2, 3 ]
+// 배열 안 각 요소 개수를 객체로 변환하기
+const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig' ];
+const count = fruitBasket.reduce( (tally, fruit) => {
+  tally[fruit] = (tally[fruit] || 0) + 1 ; // tally[fruit]가 없으면 = 0, 있으면 +1을 해준다     기본값이 0
+  return tally;
+} , {})
 
-ar.splice(1, 2, 88, 99);
-console.log(ar); //[ 1, 88, 99, 30, 2, 3]
+// console.log(count) // { banana: 2, cherry: 3, orange: 3, apple: 2, fig: 1 }
 
-let br = [66, 55, 44, 33];
-ar.splice(0, 0, br); //[ [ 66, 55, 44, 33 ], 1, 88, 99, 30, 2, 3 ]
-console.log(ar);
+// 중첩배열 평탄화
+const data = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+const flat = data.reduce((total, amount) => {
+  return total.concat(amount);
+}, []);
+
+// console.log(flat) // [ 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+// 배열 안, 객체 안에 있는 배열의 정보 가져오기 :
+const d = [
+    {a: 'happy', b: 'robin', c: ['blue','green']}, 
+    {a: 'tired', b: 'panther', c: ['green','black','orange','blue']}, 
+    {a: 'sad', b: 'goldfish', c: ['green','red']}
+];
+
+const colors = d.reduce((total, amount) => {
+    amount.c.forEach(color => {
+        total.push(color);
+    });
+    return total;
+}, []);
+
+console.log(colors);
+// 여러 함수들을 입력한 값에 순차적으로 적용하기
+const uniqueColors = d.reduce((total, amount) => {
+    amount.c.forEach( color => {
+        total.indexOf(color) === -1 && total.push(color);
+    });
+    return total;
+},[])
+
+console.log(uniqueColors);
+
+//여러 함수들을 입력한 값에 순차적으로 적용하기
+let increment = input => input + 1;
+let decrement = input => input - 1;
+let double = input => input * 2;
+
+let pipeline = [increment, double, decrement];
+const result = pipeline.reduce((total, func) => func(total),1);
+console.log(result);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
